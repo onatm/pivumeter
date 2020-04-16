@@ -263,6 +263,13 @@ int set_output_device(const char *output_device_name){
         return 0;
     }
 #endif
+#ifdef WITH_DEVICE_LED_SHIM
+    if(strcmp(output_device_name, "led-shim") == 0){
+        fprintf(stderr, "Using device: led-shim\n");
+        output_device = led_shim();
+        return 0;
+    }
+#endif
 #ifdef WITH_DEVICE_SCROLL_PHAT
     if(strcmp(output_device_name, "scroll-phat") == 0){
         fprintf(stderr, "Using device: scroll-phat\n");
